@@ -4,7 +4,7 @@ namespace FuelStation.Models
 {
   public class FuelStationContext : DbContext
   {
-    public virtual DbSet<FuelType> FuelTypes { get; set; }
+    public DbSet<FuelType> FuelTypes { get; set; }
     public virtual DbSet<SpaceShip> SpaceShips { get; set; }
     public DbSet<Planet> Planets { get; set; }
 
