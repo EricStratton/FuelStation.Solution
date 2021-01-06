@@ -25,7 +25,7 @@ namespace FuelStation
       services.AddMvc();
 
       services.AddEntityFrameworkMySql()
-          .AddDbContext<RegistrarContext>(options => options
+          .AddDbContext<FuelStationContext>(options => options
           .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
     }
 
