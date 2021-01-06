@@ -21,5 +21,18 @@ namespace FuelStation.Controllers
       List<FuelType> model = _db.FuelTypes.ToList();
       return View(model);
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(FuelType fuelType)
+    {
+      _db.FuelTypes.Add(fuelType);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

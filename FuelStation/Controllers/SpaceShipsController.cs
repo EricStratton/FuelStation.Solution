@@ -21,5 +21,18 @@ namespace FuelStation.Controllers
       List<SpaceShip> model = _db.SpaceShips.ToList();
       return View(model);
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(SpaceShip spaceShip)
+    {
+      _db.SpaceShips.Add(spaceShip);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

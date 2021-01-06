@@ -21,5 +21,18 @@ namespace FuelStation.Controllers
       List<Planet> model = _db.Planets.ToList();
       return View(model);
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Planet planet)
+    {
+      _db.Planets.Add(planet);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
