@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model FuelStation.Models.Planet
+
+<h4>Add a new Planet</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+
+    
+
+    <input type="submit" value="Add new planet" class="btn btn-default" />
+}
+<p>@Html.ActionLink("Show all Fuel Types", "Index")</p>
