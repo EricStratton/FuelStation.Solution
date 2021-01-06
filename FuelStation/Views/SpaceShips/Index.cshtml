@@ -9,7 +9,7 @@
 
 @if (@Model.Count == 0)
 {
-  <h3>No Fuel Types have been added yet!</h3>
+  <h3>No SpaceShips have been added yet!</h3>
 } 
 
 @foreach (SpaceShip spaceShip in Model)
@@ -17,6 +17,6 @@
   <li>@Html.ActionLink($"{spaceShip.Name}", "Details", new { id = spaceShip.SpaceShipId })</li>
 }
 
-<p>@Html.ActionLink("Add new fuel type", "Create")</p>
+<p>@Html.ActionLink("Add new space ship", "Create")</p>
 
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
