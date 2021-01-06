@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using FuelStation.Models;
+@model List<FuelStation.Models.FuelType>;
+
+<h1>Fuel Types</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No Fuel Types have been added yet!</h3>
+} 
+
+@foreach (FuelType fuelType in Model)
+{
+  <li>@Html.ActionLink($"{fuelType.Name}", "Details", new { id = fuelType.FuelTypeId })</li>
+}
+
+<p>@Html.ActionLink("Add new fuel type", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using FuelStation.Models;
+@model List<FuelStation.Models.SpaceShip>;
+
+<h1>SpaceShips</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No Fuel Types have been added yet!</h3>
+} 
+
+@foreach (SpaceShip spaceShip in Model)
+{
+  <li>@Html.ActionLink($"{spaceShip.Name}", "Details", new { id = spaceShip.SpaceShipId })</li>
+}
+
+<p>@Html.ActionLink("Add new fuel type", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
