@@ -51,5 +51,25 @@ namespace FuelStation.Controllers
           .FirstOrDefault(spaceShip => spaceShip.SpaceShipId == id);
       return View(thisSpaceShip);
     }
+
+    public ActionResult Edit(int id)
+    {
+      var thisSpaceShip = _db.SpaceShips.FirstOrDefault(spaceShip => spaceShip.SpaceShipId == id);
+      ViewBag.PlanetId = new SelectList(_db.Planets, "PlanetId", "Name");
+      ViewBag.FuelTypeId = new SelectList(_db.FuelTypes, "FuelTypeId", "Name");
+      return View(thisSpaceShip);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(SpaceShip spaceShip, int PlanetId, int FuelTypeId, int Id)
+    {
+      if(PlanetId != 0 && FuelTypeId != 0)
+      {
+        _db.PlanetSpaceShipFuelType.Add(new PlanetSpaceShipFuelType() { PlanetId = PlanetId, FuelTypeId = FuelTypeId, SpaceShipId = spaceShip.SpaceShipId  });
+      }
+      _db.Entry(spaceShip).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
