@@ -40,5 +40,16 @@ namespace FuelStation.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Details(int id)
+    {
+      var thisSpaceShip = _db.SpaceShips
+          .Include(spaceShip => spaceShip.JoinEntries)
+          .ThenInclude(join => join.FuelType)
+          .Include(spaceShip => spaceShip.JoinEntries)
+          .ThenInclude(join => join.Planet)
+          .FirstOrDefault(spaceShip => spaceShip.SpaceShipId == id);
+      return View(thisSpaceShip);
+    }
   }
 }
