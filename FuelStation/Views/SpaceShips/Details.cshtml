@@ -7,7 +7,7 @@
 <h2>Space Ship Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-
+@* @if(@Model.JoinEntries.FuelType.Count == 0) does not work because FuelType is a field, JoinEntries is the hashset/collection *@ 
 @if(@Model.JoinEntries.Count == 0)
 {
     <p>This space ship does not belong to any fuel types</p>
@@ -16,9 +16,17 @@ else
 {
     <h4>This ship's fuel type:</h4>
     <ul>
+    @* join is a dummy variable to represent the individual instance/object of JoinEntries that you are acting upon while you loop through it*@ 
     @foreach(var join in Model.JoinEntries)
     {
-        <li>@join.FuelType.Name</li>
+        @if(@join.FuelType != null)
+        {
+            <li>@join.FuelType.Name</li>
+        }
+        else
+        {
+            <p>no fuel type for this spaceship</p>
+        }
     }
     </ul>
 
