@@ -1,0 +1,27 @@
+@{
+    Layout = "_Layout";
+}
+
+@model FuelStation.Models.SpaceShip
+
+<h2>Edit space ship details</h2>
+
+<h4>Edit this space ship: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.SpaceShipId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  @Html.Label("Edit planet")
+  @Html.DropDownList("PlanetId")
+
+  @Html.Label("Edit fuel type")
+  @Html.DropDownList("FuelTypeId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to space ship list", "Index")</p>
