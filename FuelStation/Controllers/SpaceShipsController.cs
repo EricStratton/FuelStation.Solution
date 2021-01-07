@@ -25,16 +25,17 @@ namespace FuelStation.Controllers
     public ActionResult Create()
     {
       ViewBag.PlanetId = new SelectList(_db.Planets, "PlanetId", "Name");
+      ViewBag.FuelTypeId = new SelectList(_db.FuelTypes, "FuelTypeId", "Name");
       return View();
     }
 
-    [HttpPost]
-    public ActionResult Create(SpaceShip spaceShip, int PlanetId)
+    [HttpPost] // Create SpaceShip and chose FuelType and Home Planet
+    public ActionResult Create(SpaceShip spaceShip, int PlanetId, int FuelTypeId)
     {
       _db.SpaceShips.Add(spaceShip);
-      if(PlanetId != 0)
+      if(PlanetId != 0 && FuelTypeId != 0)
       {
-        _db.PlanetSpaceShipFuelType.Add(new PlanetSpaceShipFuelType() { PlanetId = PlanetId, SpaceShipId = spaceShip.SpaceShipId });
+        _db.PlanetSpaceShipFuelType.Add(new PlanetSpaceShipFuelType() { PlanetId = PlanetId, FuelTypeId = FuelTypeId, SpaceShipId = spaceShip.SpaceShipId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
