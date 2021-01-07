@@ -6,12 +6,12 @@ namespace FuelStation.Models
   {
     public FuelType()
     {
-      this.SpaceShips = new HashSet<PlanetSpaceShipFuelType>();  
+      this.JoinEntries = new HashSet<PlanetSpaceShipFuelType>();  
     }
 
     public int FuelTypeId { get; set; }
     public string Name { get; set; }
 
-    public virtual ICollection<PlanetSpaceShipFuelType> SpaceShips { get; set; }
+    public virtual ICollection<PlanetSpaceShipFuelType> JoinEntries { get; set; }
   }
 }
