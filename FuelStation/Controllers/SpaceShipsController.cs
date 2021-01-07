@@ -24,13 +24,18 @@ namespace FuelStation.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.PlanetId = new SelectList(_db.Planets, "PlanetId", "Name");
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(SpaceShip spaceShip)
+    public ActionResult Create(SpaceShip spaceShip, int PlanetId)
     {
       _db.SpaceShips.Add(spaceShip);
+      if(PlanetId != 0)
+      {
+        _db.PlanetSpaceShipFuelType.Add(new PlanetSpaceShipFuelType() { PlanetId = PlanetId, SpaceShipId = spaceShip.SpaceShipId });
+      }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
