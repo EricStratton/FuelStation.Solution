@@ -2,7 +2,7 @@
 
 ## Description
 
-Simple exercise working with the Entity framework for SQL datbases. Focus on many-to-many relationship with join table.
+Simple exercise working with the Entity framework for SQL datbases. Attempt to make many-to-many-to-many join table, though we've concluded that would using multiple join tables would be more optimal.
 
 ## Setup
 
